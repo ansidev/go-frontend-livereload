@@ -1,0 +1,57 @@
+version: '3'
+
+tasks:
+  deps:
+    desc: Install dependencies
+    cmds:
+      - cd web && pnpm install
+      - go get -v ./...
+    silent: true
+
+  lint:
+    desc: Lint
+    cmds:
+      - golangci-lint run ./...
+    silent: true
+
+  test:
+    desc: Run test
+    cmds:
+      - go test -v ./...
+    silent: true
+
+  coverage:
+    desc: Run coverage
+    cmds:
+      - go test -cover ./...
+    silent: true
+
+  install:
+    desc: Install command locally
+    cmds:
+      - go install
+    silent: true
+
+  assets:
+    desc: Build assets
+    cmds:
+      - cd web && pnpm dev
+
+  app:
+    desc: Run app
+    cmds:
+      - air
+
+  dev:
+    desc: Run dev server
+    deps: [assets, app]
+    cmds:
+      - echo "Stopped"
+    silent: true
+
+  build:
+    desc: Build
+    cmds:
+      - go build -o ./tmp/dev-server ./cmd
+    silent: true
+

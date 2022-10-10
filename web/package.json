@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "tailwindcss -i ./assets/css/tailwind.css -o ./static/style.css --watch",
+    "build": "tailwindcss -i ./assets/css/tailwind.css -o ./static/style.css --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "postcss": "^8.4.17",
+    "sailui": "^0.7.0",
+    "tailwindcss": "^3.1.8"
+  }
+}
